@@ -1,36 +1,31 @@
 [project]
 name="duplicate-image-finder"
-dynamic = ["version"]
+version = "2.0.5"
 description="A tool that uses image hashes to find duplicate images"
-authors=[{name="TheTimebreaker"}]
+license = { file = "UNLICENSE" }
+authors = [
+    { name = "TheTimebreaker", email = "github@thetimebreaker.mozmail.com" }
+]
 readme="README.md"
 requires-python=">=3.14"
 dependencies = [
-  "imagesize~=2.0.0",
-  "ImageHash~=4.3.2",
-  "pillow~=12.1.1",
-  "Send2Trash~=2.1.0",
+  "imagesize>=2.0.0",
+  "ImageHash>=4.3.2",
+  "pillow>=12.1.1",
+  "Send2Trash>=2.1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "black~=26.5.1",
-    "mypy~=2.1.0",
-    "ruff~=0.15.17",
-    "types-Send2Trash~=2.1.0",
+    "black>=26.5.1",
+    "mypy>=2.1.0",
+    "ruff>=0.15.17",
+    "types-Send2Trash>=2.1.0",
 ]
 
 [build-system]
-requires = [
-    "setuptools",
-    "setuptools-scm",
-]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.package-data]
-duplicate-image-finder = ["py.typed"]
-
-[tool.setuptools_scm]
+requires = ["uv_build>=0.12.4,<0.13.0"]
+build-backend = "uv_build"
 
 [tool.ruff]
 line-length = 150

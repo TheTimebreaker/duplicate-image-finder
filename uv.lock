@@ -115,6 +115,7 @@ wheels = [
 
 [[package]]
 name = "duplicate-image-finder"
+version = "2.0.5"
 source = { editable = "." }
 dependencies = [
     { name = "imagehash" },

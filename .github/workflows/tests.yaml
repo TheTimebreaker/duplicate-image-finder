@@ -1,0 +1,60 @@
+name: Automatically run tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: ["3.14"]
+        resolution: ["highest", "lowest"]
+
+    name: Python ${{ matrix.python-version }} / ${{ matrix.resolution }} dependencies
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: false
+
+      - name: Install Python
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        if: matrix.resolution == 'highest'
+        run: uv sync --dev
+
+      - name: Install minimum dependencies
+        if: matrix.resolution == 'lowest'
+        run: uv sync --dev --resolution lowest-direct
+
+      - name: Run ruff
+        run: uv run ruff check .
+
+      - name: Run black
+        run: uv run black --check .
+
+      - name: Run mypy
+        run: uv run mypy .
+
+
+  tests-passed:
+    name: All tests passed
+    if: ${{ !cancelled() }}
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          if [[ "${{ needs.test.result }}" != "success" ]]; then
+            echo "One or more test matrix jobs failed."
+            exit 1
+          fi
