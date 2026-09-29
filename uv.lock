@@ -115,7 +115,7 @@ wheels = [
 
 [[package]]
 name = "duplicate-image-finder"
-version = "2.0.5"
+version = "2.0.6"
 source = { editable = "." }
 dependencies = [
     { name = "imagehash" },
@@ -134,14 +134,14 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "black", marker = "extra == 'dev'", specifier = "~=26.5.1" },
-    { name = "imagehash", specifier = "~=4.3.2" },
-    { name = "imagesize", specifier = "~=2.0.0" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = "~=2.1.0" },
-    { name = "pillow", specifier = "~=12.1.1" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = "~=0.15.17" },
-    { name = "send2trash", specifier = "~=2.1.0" },
-    { name = "types-send2trash", marker = "extra == 'dev'", specifier = "~=2.1.0" },
+    { name = "black", marker = "extra == 'dev'", specifier = ">=26.5.1" },
+    { name = "imagehash", specifier = ">=4.3.2" },
+    { name = "imagesize", specifier = ">=2.0.0" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = ">=2.1.0" },
+    { name = "pillow", specifier = ">=12.1.1" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.15.17" },
+    { name = "send2trash", specifier = ">=2.1.0" },
+    { name = "types-send2trash", marker = "extra == 'dev'", specifier = ">=2.1.0" },
 ]
 provides-extras = ["dev"]
 
