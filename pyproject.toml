@@ -1,6 +1,6 @@
 [project]
 name="duplicate-image-finder"
-version = "2.0.6"
+version = "2.0.7"
 description="A tool that uses image hashes to find duplicate images"
 license = { file = "UNLICENSE" }
 authors = [
@@ -15,12 +15,12 @@ dependencies = [
   "Send2Trash>=2.1.0",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "black>=26.5.1",
-    "mypy>=2.1.0",
-    "ruff>=0.15.17",
-    "types-Send2Trash>=2.1.0",
+    "mypy>=2.3.1",
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
 ]
 
 [build-system]
