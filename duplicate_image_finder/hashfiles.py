@@ -154,7 +154,8 @@ class Hashfile:
     def _generate_hashes(self) -> None:
         """Generates hashes for all files in folder and saves them into a hash file that gets used for later runs to cut down processing."""
         last_save = time.time()
-        for file in self.path.iterdir():
+        for i, file in enumerate(self.path.iterdir()):
+            logging.info("Generating hashes, dimensions and filesize (#%s)... ", str(i))
             if file.name in self.data:  # Skips files that already have a stored hash
                 continue
 
